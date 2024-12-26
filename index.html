@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhythm Wave - Music Page</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            --secondary-gradient: linear-gradient(45deg, #ff6b6b 0%, #4ecdc4 100%);
+            --background-color: #f4f7f6;
+            --card-background: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: var(--background-color);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .music-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .header {
+            background: var(--primary-gradient);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            animation: headerPulse 3s infinite alternate;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(-45deg);
+            animation: backgroundWave 10s linear infinite;
+        }
+
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem 1rem;
+        }
+
+        .music-card {
+            background: var(--card-background);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .music-card:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .music-card-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .music-card:hover .music-card-image {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .music-card-content {
+            padding: 1rem;
+            background: rgba(255,255,255,0.8);
+            text-align: center;
+        }
+
+        .play-button {
+            background: var(--secondary-gradient);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        .play-button:hover {
+            transform: translateX(-50%) scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        @keyframes headerPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes backgroundWave {
+            0% { transform: rotate(-45deg) translateX(-50%); }
+            100% { transform: rotate(-45deg) translateX(50%); }
+        }
+
+        @keyframes floatAnimation {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+
+        .float-animation {
+            animation: floatAnimation 3s ease-in-out infinite;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .music-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="music-container">
+        <div class="header animate__animated animate__fadeInDown">
+            <h1>Rhythm Wave</h1>
+        </div>
+
+        <div class="music-grid">
+            <!-- Music Card 1 -->
+            <div class="music-card animate__animated animate__fadeInUp float-animation">
+                <img src="/api/placeholder/400/250" alt="Music Track" class="music-card-image">
+                <div class="music-card-content">
+                    <h3>Sunset Melody</h3>
+                    <p>Ambient Waves</p>
+                    <button class="play-button">Play Now</button>
+                </div>
+            </div>
+
+            <!-- Music Card 2 -->
+            <div class="music-card animate__animated animate__fadeInUp float-animation" style="animation-delay: 0.2s;">
+                <img src="/api/placeholder/400/250" alt="Music Track" class="music-card-image">
+                <div class="music-card-content">
+                    <h3>Urban Nights</h3>
+                    <p>City Rhythms</p>
+                    <button class="play-button">Play Now</button>
+                </div>
+            </div>
+
+            <!-- Music Card 3 -->
+            <div class="music-card animate__animated animate__fadeInUp float-animation" style="animation-delay: 0.4s;">
+                <img src="/api/placeholder/400/250" alt="Music Track" class="music-card-image">
+                <div class="music-card-content">
+                    <h3>Mountain Echo</h3>
+                    <p>Nature Sounds</p>
+                    <button class="play-button">Play Now</button>
+                </div>
+            </div>
+
+            <!-- Music Card 4 -->
+            <div class="music-card animate__animated animate__fadeInUp float-animation" style="animation-delay: 0.6s;">
+                <img src="/api/placeholder/400/250" alt="Music Track" class="music-card-image">
+                <div class="music-card-content">
+                    <h3>Electric Pulse</h3>
+                    <p>Techno Beats</p>
+                    <button class="play-button">Play Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add interactive animations to play buttons
+        document.querySelectorAll('.play-button').forEach(button => {
+            button.addEventListener('click', function() {
+                this.classList.add('animate__animated', 'animate__heartBeat');
+                setTimeout(() => {
+                    this.classList.remove('animate__animated', 'animate__heartBeat');
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
